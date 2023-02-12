@@ -1,22 +1,35 @@
 <!doctype html>
+<?php
+/** @var $this \thecodeholic\phpmvc\View */
+?>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="/css/auth.css">
+    <title><?php echo $this->title?></title>
 </head>
 <body>
 
-<div class="container">
-    {{content}}
+<div id="master">
+    <div id="page">
+        <div id="auth">
+            <div class="box-wrap">
+                <div class="auth-logo">
+                    <a href="#">
+                        <img src="https://share-gcdn.basecdn.net/brand/logo.full.png">
+                    </a>
+                </div>
+                <div class="box">
+                {{content}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
