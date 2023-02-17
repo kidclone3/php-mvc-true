@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 
+use app\models\UserDetails;
 use thecodeholic\phpmvc\Application;
 use thecodeholic\phpmvc\Controller;
 use thecodeholic\phpmvc\middlewares\AuthMiddleware;
@@ -94,5 +95,21 @@ class SiteController extends Controller
         echo '<pre>';
         var_dump($request->getBody());
         echo '</pre>';
+    }
+    public function updateProfile(Request $request)
+    {
+        $updateProfile = new UserDetails();
+        if ($request->isPost()) {
+            $updateProfile->loadData($request->getBody());
+//            if ($updateProfile->save()) {
+//                Application::$app->session->setFlash('success', 'Thanks for registering');
+//                Application::$app->response->redirect('/');
+//                return 'Show success page';
+//            }
+        }
+        $this->setLayout('main');
+        return $this->render('updateProfile', [
+            'model' => $updateProfile
+        ]);
     }
 }

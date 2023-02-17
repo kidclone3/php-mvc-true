@@ -1,9 +1,9 @@
 {
-    "name": "thecodeholic/phpmvc-framework",
+    "name": "kidclone3/php-mvc-true",
     "authors": [
         {
-            "name": "Zura Sekhniashvili",
-            "email": "zurasekhniashvili@gmail.com"
+            "name": "Delus",
+            "email": "kid21200@gmail.com"
         }
     ],
     "autoload": {

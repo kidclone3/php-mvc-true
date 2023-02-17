@@ -23,6 +23,7 @@ class User extends UserModel
     public string $firstname = '';
     public string $lastname = '';
     public string $email = '';
+    public string $username = '';
     public string $password = '';
     public string $passwordConfirm = '';
 

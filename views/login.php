@@ -14,7 +14,7 @@ $this->title = 'Login - Base Account';
 </div>
     <?php echo $form->field($model, 'email') ?>
     <?php echo $form->field($model, 'password')->passwordField() ?>
-    <div class="submit" onclick="">Login to start working</div>
+    <button type="submit" name="submit">Login to start working</button>
 <div class="extra">
     <div class="simple">
         <a class="a" href="#">
@@ -22,5 +22,4 @@ $this->title = 'Login - Base Account';
         </a>
     </div>
 </div>
-
 <?php Form::end() ?>
