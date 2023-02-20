@@ -1,10 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+}
+header {
+    position: relative;
+    top: 0;
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1em ridge #e9eaed;
+}
+header .group-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #9fa0a2;
+}
+header .group-left .fa-arrow-left {
+    font-size: 24px;
+    color: #9fa0a2;
+    margin-right: 20px;
+}
+header .account {
+    margin-left: 0;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #e9eaed;
+}
+header h1 {
+    font-size: 20px;
+    font-weight: 550;
+    margin-left: 0;
+}
+header .nav-group {
+    flex-direction: row;
+    position: relative;
+    line-height: 3px;
+}
+header .btn-edit {
+    display: flex;
+    background-color: #4dcb92;
+    height: 40px;
+    width: 180px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 5px;
+    border-width: 0;
+}
+header .btn-edit:hover {
+    background-color: #45b783;
+}
+header .btn-edit .fa-arrow-up {
+    margin-right: 20px;
+}
+
 .container {
     margin: 50px auto;
     text-align: center;
 }
+.box {
+    padding: 20px;
+    display: flex;
+    position: relative;
+    z-index: 3;
+    justify-content: space-between;
 
+}
+.box .avatar {
+    flex-direction: column;
+}
+.box .info {
+}
+.box .info .info-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    row-gap: 10px;
+}
+.box .info .info-box .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+.box .info .info-box .right h4 {
+    color: #4b494a;
+}
+.contact {
+    position: relative;
+    z-index: 3;
+}
 img {
+    position: relative;
     border-radius: 50%;
+    /*flex: 1;*/
+    height: 150px;
+    width: 150px;
+    margin-right: 20px;
 }
 
 h1, h3 {
@@ -14,8 +126,27 @@ h1, h3 {
 
 h1 {
     margin-top: 20px;
+    font-size: 28px;
 }
-
+h3 {
+    font-size: 18px;
+    color: #e3e5e8;
+    margin: 10px 0 10px 0px;
+}
+h4 {
+    font-size: 16px;
+    color: #9fa0a2;
+    /*margin-top: 10px;*/
+}
 p {
     margin: 10px 0;
+}
+#check {
+    z-index: 3;
+}
+#check:checked ~ .box {
+    z-index: 2;
+    position: fixed;
+    background: rgb(115,115,115);
+    display: flex;
 }

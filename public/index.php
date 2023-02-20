@@ -8,13 +8,15 @@
 
 use app\controllers\AboutController;
 use app\controllers\SiteController;
+use app\models\User;
+use Dotenv\Dotenv;
 use thecodeholic\phpmvc\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 $config = [
-    'userClass' => \app\models\User::class,
+    'userClass' => User::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
@@ -38,8 +40,7 @@ $app->router->get('/logout', [SiteController::class, 'logout']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->get('/about', [AboutController::class, 'index']);
 $app->router->get('/profile', [SiteController::class, 'profile']);
-$app->router->post('/update_profile', [SiteController::class, 'updateProfile']);
-$app->router->get('/update_profile', [SiteController::class, 'updateProfile']);
+$app->router->post('/profile', [SiteController::class, 'profile']);
 
 $app->router->get('/profile/{id:\d+}/{username}', [SiteController::class, 'login']);
 // /profile/{id}
