@@ -39,9 +39,9 @@ class SiteController extends Controller
 
     public function login(Request $request)
     {
-        echo '<pre>';
-        var_dump($request->getBody(), $request->getRouteParam('id'));
-        echo '</pre>';
+//        echo '<pre>';
+//        var_dump($request->getBody(), $request->getRouteParam('id'));
+//        echo '</pre>';
         $loginForm = new LoginForm();
         if ($request->getMethod() === 'post') {
             $loginForm->loadData($request->getBody());
@@ -59,9 +59,11 @@ class SiteController extends Controller
     public function register(Request $request)
     {
         $registerModel = new User();
+        $registerUserDetails = new UserDetails();
         if ($request->getMethod() === 'post') {
             $registerModel->loadData($request->getBody());
-            if ($registerModel->validate() && $registerModel->save()) {
+            $registerUserDetails->loadData(['username'=>$request->getBody()['username']]);
+            if ($registerModel->validate() && $registerModel->save() && $registerUserDetails->save()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
                 Application::$app->response->redirect('/');
                 return 'Show success page';
@@ -85,8 +87,20 @@ class SiteController extends Controller
         return $this->render('contact');
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
+        if ($request->isPost()) {
+            $request->getBody();
+            $updateProfile = UserDetails::findOne(['username'=>Application::$app->user->username]);
+            $request_body =  $request->getBody();
+            unset($request_body['username']);
+            $updateProfile->loadData($request_body);
+            $updateProfile->update();
+//            echo '<pre>';
+//            var_dump($updateProfile);
+//            echo '</pre>';
+        }
+        $this->setLayout('child');
         return $this->render('profile');
     }
 
@@ -95,21 +109,5 @@ class SiteController extends Controller
         echo '<pre>';
         var_dump($request->getBody());
         echo '</pre>';
-    }
-    public function updateProfile(Request $request)
-    {
-        $updateProfile = new UserDetails();
-        if ($request->isPost()) {
-            $updateProfile->loadData($request->getBody());
-//            if ($updateProfile->save()) {
-//                Application::$app->session->setFlash('success', 'Thanks for registering');
-//                Application::$app->response->redirect('/');
-//                return 'Show success page';
-//            }
-        }
-        $this->setLayout('main');
-        return $this->render('updateProfile', [
-            'model' => $updateProfile
-        ]);
     }
 }

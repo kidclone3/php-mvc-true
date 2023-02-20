@@ -25,6 +25,11 @@ abstract class DbModel extends Model
         return 'id';
     }
 
+    public static function prepare($sql): \PDOStatement
+    {
+        return Application::$app->db->prepare($sql);
+    }
+
     public function save()
     {
         $tableName = $this->tableName();
@@ -39,10 +44,6 @@ abstract class DbModel extends Model
         return true;
     }
 
-    public static function prepare($sql): \PDOStatement
-    {
-        return Application::$app->db->prepare($sql);
-    }
 
     public static function findOne($where)
     {
