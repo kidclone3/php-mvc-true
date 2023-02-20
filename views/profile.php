@@ -82,6 +82,6 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
         $(".btn-edit").click(function () {
             $("#check").is(":checked") ? $("#check").prop("checked", false) : $("#check").prop("checked", true);
         });
-    }
+    })
 
 </script>
