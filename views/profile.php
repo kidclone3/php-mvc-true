@@ -18,7 +18,9 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
             <h1> <?php echo $user->getDisplayName()."-".$user->getRole();?></h1>
         </div>
     </div>
+    <label for="check">
     <button class="btn-edit"> <i class="fa-solid fa-arrow-up"></i>Edit my account</button>
+    </label>
 
 </header>
 
@@ -51,10 +53,10 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
     <div class="contact-info"></div>
     <h4>Address</h4>
 </div>
-<div class="container">
-    <h1><?php echo Application::$app->user->getDisplayName() ?></h1>
+
+<div class="form-popup">
+    <h1>Edit personal profile</h1>
     <?php Form::begin('', 'post') ?>
-    <div class="form-group">
         <label for="firstname">First Name</label>
         <input type="text" name="firstname" id="firstname" class="form-control">
 
@@ -73,9 +75,7 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
         <label for="address">Address</label>
         <input type="text" name="address" id="address" class="form-control">
         <button type="submit" name="submit">Save</button>
-    </div>
     <?php Form::end() ?>
-
 </div>
 <script>
     $(document).ready(function () {

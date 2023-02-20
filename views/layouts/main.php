@@ -54,7 +54,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="form-popup">
     <?php if (Application::$app->session->getFlash('success')): ?>
         <div class="alert alert-success">
             <p><?php echo Application::$app->session->getFlash('success') ?></p>

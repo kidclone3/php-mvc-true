@@ -19,7 +19,7 @@ header {
     position: relative;
     top: 0;
     width: 100%;
-    padding: 20px 0px;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,10 +71,6 @@ header .btn-edit .fa-arrow-up {
     margin-right: 20px;
 }
 
-.container {
-    margin: 50px auto;
-    text-align: center;
-}
 .box {
     padding: 20px;
     display: flex;
@@ -131,7 +127,7 @@ h1 {
 h3 {
     font-size: 18px;
     color: #e3e5e8;
-    margin: 10px 0 10px 0px;
+    margin: 10px 0 10px 0;
 }
 h4 {
     font-size: 16px;
@@ -141,12 +137,50 @@ h4 {
 p {
     margin: 10px 0;
 }
+
+.form-popup {
+    z-index: 4;
+    display: flex;
+    margin: 50px auto;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background: #f0f0f0;
+    border-radius: 12px;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+.form-popup h1 {
+    ;
+}
+form {
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1em;
+    background: #ffffff;
+}
+form label {
+    padding: 0.5em 0.5em 0.5em 0;
+}
+
+form input {
+    background: #fff;
+    border: 1px solid #9c9c9c;
+}
 #check {
     z-index: 3;
+    display: none;
 }
-#check:checked ~ .box {
+#check:checked ~ section {
+    background-color: rgba(115,115,115, 0.9);
+}
+#check:checked ~ .form-popup {
     z-index: 2;
     position: fixed;
-    background: rgb(115,115,115);
     display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
