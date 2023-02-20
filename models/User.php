@@ -26,6 +26,8 @@ class User extends UserModel
     public string $username = '';
     public string $password = '';
     public string $passwordConfirm = '';
+    public string $created_at = '';
+
 
     public static function tableName(): string
     {
@@ -34,14 +36,15 @@ class User extends UserModel
 
     public function attributes(): array
     {
-        return ['firstname', 'lastname', 'email', 'password'];
+        return ['username', 'email', 'password'];
     }
 
     public function labels(): array
     {
         return [
-            'firstname' => 'First name',
-            'lastname' => 'Last name',
+            'firstname' => 'First Name',
+            'lastname' => 'Last Name',
+            'username' => 'Username',
             'email' => 'Email',
             'password' => 'Password',
             'passwordConfirm' => 'Password Confirm'
@@ -51,8 +54,7 @@ class User extends UserModel
     public function rules()
     {
         return [
-            'firstname' => [self::RULE_REQUIRED],
-            'lastname' => [self::RULE_REQUIRED],
+            'username' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [
                 self::RULE_UNIQUE, 'class' => self::class
             ]],
@@ -70,6 +72,11 @@ class User extends UserModel
 
     public function getDisplayName(): string
     {
-        return $this->firstname . ' ' . $this->lastname;
+        return $this->username;
+    }
+
+    public function getRole(): string
+    {
+        return 'Owner';
     }
 }
