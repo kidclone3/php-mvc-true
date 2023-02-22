@@ -4,11 +4,14 @@
 use thecodeholic\phpmvc\form\Form;
 
 $form = new Form();
+$this->title = 'Register - Base Account';
+
 ?>
-
-<h1>Register</h1>
-
 <?php $form = Form::begin('', 'post') ?>
+<h1>Register</h1>
+    <div class="auth-sub-title">
+        Welcome. Create your account to start working.
+    </div>
     <div class="row">
         <div class="col">
             <?php echo $form->field($model, 'firstname') ?>
