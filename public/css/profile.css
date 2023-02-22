@@ -77,7 +77,6 @@ header .btn-edit .fa-arrow-up {
     position: relative;
     z-index: 3;
     justify-content: space-between;
-
 }
 .box .avatar {
     flex-direction: column;

@@ -34,14 +34,7 @@
 <!--Jquery-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
-    var width = $(window).width();
-    $(window).on('resize', function() {
-        if ($(this).width() !== width) {
-            width = $(this).width();
-            // $("#auth").css("left", width-600)
-            console.log(width);
-        }
-    });
+
 </script>
 </body>
 </html>
