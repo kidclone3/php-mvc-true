@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div id="master">
+<div id="master" class="wf">
     <div id="page">
         <div id="auth">
             <div class="box-wrap">
