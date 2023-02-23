@@ -33,8 +33,16 @@ class LoginForm extends Model
     public function labels()
     {
         return [
-            'email' => 'Your Email address / Username',
+            'email' => 'Email / Username',
             'password' => 'Password'
+        ];
+    }
+
+    public function placeholders()
+    {
+        return [
+            'email' => 'Your email or username',
+            'password' => 'Your password'
         ];
     }
 

@@ -36,11 +36,12 @@ class Field extends BaseField
 
     public function renderInput()
     {
-        return sprintf('<input type="%s" class="form-control%s" name="%s" value="%s">',
+        return sprintf('<input type="%s" class="form-control%s" name="%s" value="%s" placeholder="%s">',
             $this->type,
             $this->model->hasError($this->attribute) ? ' is-invalid' : '',
             $this->attribute,
             $this->model->{$this->attribute},
+            $this->model->getPlaceholder($this->attribute)
         );
     }
 

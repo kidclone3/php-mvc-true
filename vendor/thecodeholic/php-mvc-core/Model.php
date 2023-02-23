@@ -49,6 +49,10 @@ class Model
         return $this->labels()[$attribute] ?? $attribute;
     }
 
+    public function getPlaceholder($attribute)
+    {
+        return $this->placeholders()[$attribute] ?? $attribute;
+    }
     public function rules()
     {
         return [];
