@@ -1,9 +1,8 @@
 <?php
-/** @var $model \thecodeholic\phpmvc\Model */
-
+/** @var $model \app\models\RegisterForm */
+/** @var $this \thecodeholic\phpmvc\View */
 use thecodeholic\phpmvc\form\Form;
 
-$form = new Form();
 $this->title = 'Register - Base Account';
 
 ?>

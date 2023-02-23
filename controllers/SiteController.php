@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 
+use app\models\RegisterForm;
 use app\models\UserDetails;
 use thecodeholic\phpmvc\Application;
 use thecodeholic\phpmvc\Controller;
@@ -15,7 +16,6 @@ use thecodeholic\phpmvc\middlewares\AuthMiddleware;
 use thecodeholic\phpmvc\Request;
 use thecodeholic\phpmvc\Response;
 use app\models\LoginForm;
-use app\models\User;
 
 /**
  * Class SiteController
@@ -58,21 +58,24 @@ class SiteController extends Controller
 
     public function register(Request $request)
     {
-        $registerModel = new User();
-        $registerUserDetails = new UserDetails();
+        $registerForm = new RegisterForm();
+//        $registerModel = new User();
+//        $registerUserDetails = new UserDetails();
         if ($request->getMethod() === 'post') {
-            $registerModel->loadData($request->getBody());
-            $registerUserDetails->loadData(['username'=>$request->getBody()['username']]);
-            if ($registerModel->validate() && $registerModel->save() && $registerUserDetails->save()) {
+            $registerForm->loadData($request->getBody());
+//            $registerModel->loadData($request->getBody());
+//            $registerUserDetails->loadData(['username'=>$request->getBody()['username']]);
+//            if ($registerModel->validate() && $registerModel->save() && $registerUserDetails->save()) {
+            if ($registerForm->validate() && $registerForm->register()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
-                Application::$app->response->redirect('/');
+                Application::$app->response->redirect('/login');
                 return 'Show success page';
             }
 
         }
         $this->setLayout('auth');
         return $this->render('register', [
-            'model' => $registerModel
+            'model' => $registerForm
         ]);
     }
 
