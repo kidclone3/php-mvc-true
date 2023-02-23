@@ -75,6 +75,10 @@ class User extends UserModel
         return $this->username;
     }
 
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
     public function getRole(): string
     {
         return 'Owner';

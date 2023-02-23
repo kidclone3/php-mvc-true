@@ -41,7 +41,7 @@ class Field extends BaseField
             $this->model->hasError($this->attribute) ? ' is-invalid' : '',
             $this->attribute,
             $this->model->{$this->attribute},
-            $this->model->getPlaceholder($this->attribute)
+            $this->model->{$this->attribute} ? $this->model->{$this->attribute} : $this->model->getPlaceholder($this->attribute)
         );
     }
 

@@ -53,7 +53,7 @@ header .nav-group {
     position: relative;
     line-height: 3px;
 }
-header .btn-edit {
+button#btn-open {
     display: flex;
     background-color: #2bd14e;
     height: 40px;
@@ -64,10 +64,10 @@ header .btn-edit {
     border-radius: 5px;
     border-width: 0;
 }
-header .btn-edit:hover {
+button#btn-open:hover {
     background-color: #45b783;
 }
-header .btn-edit .fa-arrow-up {
+button#btn-open .fa-arrow-up {
     margin-right: 20px;
 }
 
@@ -137,21 +137,68 @@ p {
     margin: 10px 0;
 }
 
-.form-popup {
+#modal-container {
     z-index: 4;
-    display: flex;
+    /*display: flex;*/
     margin: 50px auto;
     text-align: center;
-    width: 100vw;
-    height: 100vh;
-    background: #f0f0f0;
+    /*width: 100vw;*/
+    min-height: 100vh;
     border-radius: 12px;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease-in-out;
+}
+#modal-container.show{
+    opacity: 1;
+    pointer-events: all;
+}
+#modal-container.show #modal {
+    top:100px
+}
+#modal {
+    max-width: 500px;
+    background-color: #fff;
+    position: relative;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    transition: all 0.25s ease-in-out;
+}
+#modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    border-bottom: 1px solid #dedede;
+
+}
+#modal-container .modal-header h1 {
+    font-size: 24px;
+    font-weight: 550;
+    margin: 20px 0;
+}
+button#btn-close {
+    border: 0;
+    font-size: 24px;
+    background: none;
+    outline: none;
+}
+#modal-container .button {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: relative;
+    align-items: center;
+    margin: 20px 0;
+
 }
-.form-popup h1 {
-    ;
+button {
+    cursor: pointer;
 }
 form {
     display:grid;
@@ -174,7 +221,7 @@ form input {
 #check:checked ~ section {
     background-color: rgba(115,115,115, 0.9);
 }
-#check:checked ~ .form-popup {
+#check:checked ~ .modal-container {
     z-index: 2;
     position: fixed;
     display: flex;

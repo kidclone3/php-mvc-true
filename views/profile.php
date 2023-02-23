@@ -7,10 +7,9 @@ use thecodeholic\phpmvc\form\Form;
 
 $this->title = 'Profile';
 $user = Application::$app->user;
-$userDetails = UserDetails::findOne(['username' => $user->username]);
+$model = UserDetails::findOne(['username' => $user->username]);
 ?>
 <header>
-    <input type="checkbox" id="check">
     <div class="group-left">
         <i class="fa-solid fa-arrow-left"></i>
         <div class="nav-group">
@@ -18,10 +17,7 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
             <h1> <?php echo $user->getDisplayName()."-".$user->getRole();?></h1>
         </div>
     </div>
-    <label for="check">
-    <button class="btn-edit"> <i class="fa-solid fa-arrow-up"></i>Edit my account</button>
-    </label>
-
+    <button id="btn-open"> <i class="fa-solid fa-arrow-up"></i>Edit my account</button>
 </header>
 
 <div class="box">
@@ -39,8 +35,8 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
                 <h4 class="column">Direct managers</h4>
             </div>
             <div class="right">
-                <a class="column"><?php echo $user->email?></a>
-                <a class="column"><?php echo $userDetails->phoneNumber?></a>
+                <a class="column"><?php echo $user->getEmail()?></a>
+                <a class="column"><?php echo $model->getPhoneNumber()?></a>
                 <a class="column"></a>
             </div>
         </div>
@@ -54,34 +50,63 @@ $userDetails = UserDetails::findOne(['username' => $user->username]);
     <h4>Address</h4>
 </div>
 
-<div class="form-popup">
-    <h1>Edit personal profile</h1>
-    <?php Form::begin('', 'post') ?>
-        <label for="firstname">First Name</label>
-        <input type="text" name="firstname" id="firstname" class="form-control">
+<div id="modal-container" class="">
+    <div id="modal">
+        <div class="modal-header">
+            <h1>Edit personal profile</h1>
+            <button id="btn-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    <div class="modal-body">
+    <?php  $form = Form::begin('', 'post');?>
+<!--        <label for="firstname">First Name</label>-->
+<!--        <input type="text" name="firstname" id="firstname" class="form-control">-->
+<!---->
+<!--        <label for="lastname">Last Name</label>-->
+<!--        <input type="text" name="lastname" id="lastname" class="form-control">-->
+<!--        <label for="jobTitle">Job title</label>-->
+<!--        <input type="text" name="jobTitle" id="jobTitle" class="form-control">-->
+<!--        <label for="username">Username</label>-->
+<!--        <a>--><?php //echo Application::$app->session->get('username')?><!--</a>-->
+<!--        <label for="profileImage">Profile image</label>-->
+<!--        <input type="text" name="profileImage" id="profileImage" class="form-control">-->
+<!--        <label for="dob">Date of birth</label>-->
+<!--        <input type="date" name="dob" id="dob" class="form-control">-->
+<!--        <label for="phoneNumber">Phone number</label>-->
+<!--        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control">-->
+<!--        <label for="address">Address</label>-->
+<!--        <input type="text" name="address" id="address" class="form-control">-->
 
-        <label for="lastname">Last Name</label>
-        <input type="text" name="lastname" id="lastname" class="form-control">
-        <label for="jobTitle">Job title</label>
-        <input type="text" name="jobTitle" id="jobTitle" class="form-control">
+    <?php echo $form->field($model, 'firstname')?>
+    <?php echo $form->field($model, 'lastname')?>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="email" value="<?php echo $user->getEmail()?>" class ="form-control" readonly>
+    </div>
+    <div class="form-group">
         <label for="username">Username</label>
-        <a><?php echo Application::$app->session->get('username')?></a>
-        <label for="profileImage">Profile image</label>
-        <input type="text" name="profileImage" id="profileImage" class="form-control">
-        <label for="dob">Date of birth</label>
-        <input type="date" name="dob" id="dob" class="form-control">
-        <label for="phoneNumber">Phone number</label>
-        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control">
-        <label for="address">Address</label>
-        <input type="text" name="address" id="address" class="form-control">
-        <button type="submit" name="submit">Save</button>
+        <input type="text" name="username" value="<?php echo $user->getDisplayName()?>" class ="form-control" readonly>
+    </div>
+    <?php echo $form->field($model, 'jobTitle')?>
+    <?php echo $form->field($model, 'profileImage')?>
+    <?php echo $form->field($model, 'dob')?>
+    <?php echo $form->field($model, 'phoneNumber')?>
+    <?php echo $form->field($model, 'address')?>
+    <div class="button">
+        <button type="reset" name="cancel" class="btn-cancel">Cancel</button>
+        <button type="submit" name="submit" class="btn-update">Update</button>
+    </div>
     <?php Form::end() ?>
+    </div>
+    </div>
 </div>
 <script>
-    $(document).ready(function () {
-        $(".btn-edit").click(function () {
-            $("#check").is(":checked") ? $("#check").prop("checked", false) : $("#check").prop("checked", true);
-        });
-    })
-
+    const btnOpen = document.getElementById('btn-open');
+    const btnClose = document.getElementById('btn-close');
+    const modalContainer = document.getElementById('modal-container');
+    btnOpen.addEventListener('click', () => {
+        modalContainer.classList.add('show');
+    });
+    btnClose.addEventListener('click', () => {
+        modalContainer.classList.remove('show');
+    });
 </script>

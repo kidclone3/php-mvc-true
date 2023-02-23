@@ -42,6 +42,19 @@ class UserDetails extends User {
             'address' => 'Current address',
         ];
     }
+    public function placeholders():array {
+        return [
+            'firstname' => 'Your first name',
+            'lastname' => 'Your last name',
+            'email' => 'Email',
+            'username' => 'Username',
+            'jobTitle' => 'Job title',
+            'profileImage' => 'Profile image',
+            'dob' => 'Date of birth',
+            'phone' => 'Your phone number',
+            'address' => 'Current address',
+        ];
+    }
     public function subtitle():array {
         return [
             'firstname' => 'Your first name',
@@ -88,5 +101,10 @@ class UserDetails extends User {
     public function getDisplayName(): string
     {
         return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber;
     }
 }
