@@ -21,6 +21,7 @@ class Field extends BaseField
     const TYPE_TEXT = 'text';
     const TYPE_PASSWORD = 'password';
     const TYPE_FILE = 'file';
+    const TYPE_DATE = 'date';
 
     /**
      * Field constructor.
@@ -28,12 +29,11 @@ class Field extends BaseField
      * @param \thecodeholic\phpmvc\Model $model
      * @param string          $attribute
      */
-    public function __construct(Model $model, string $attribute)
+    public function __construct(Model $model, string $attribute, $type = self::TYPE_TEXT)
     {
-        $this->type = self::TYPE_TEXT;
+        $this->type = $type;
         parent::__construct($model, $attribute);
     }
-
     public function renderInput()
     {
         return sprintf('<input type="%s" class="form-control%s" name="%s" value="%s" placeholder="%s">',

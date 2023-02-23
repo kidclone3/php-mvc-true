@@ -6,17 +6,11 @@
     font-family: "Roboto", sans-serif;
 }
 section {
-    position: relative;
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     padding: 30px;
 }
 header {
-    position: relative;
     top: 0;
     width: 100%;
     padding: 20px 0;
@@ -74,9 +68,8 @@ button#btn-open .fa-arrow-up {
 .box {
     padding: 20px;
     display: flex;
-    position: relative;
     z-index: 3;
-    justify-content: space-between;
+    justify-content: center;
 }
 .box .avatar {
     flex-direction: column;
@@ -140,19 +133,20 @@ p {
 #modal-container {
     z-index: 4;
     /*display: flex;*/
-    margin: 50px auto;
+    margin: 20px auto;
     text-align: center;
-    /*width: 100vw;*/
     min-height: 100vh;
     border-radius: 12px;
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: inherit;
     opacity: 0;
     pointer-events: none;
     transition: all 0.25s ease-in-out;
+    overflow-y:scroll;
+    padding-bottom: 40px;
 }
 #modal-container.show{
     opacity: 1;
@@ -162,7 +156,7 @@ p {
     top:100px
 }
 #modal {
-    max-width: 500px;
+    max-width: 60vw;
     background-color: #fff;
     position: relative;
     left: 50%;
@@ -189,13 +183,32 @@ button#btn-close {
     background: none;
     outline: none;
 }
-#modal-container .button {
+#modal-container .btn-group {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
-
+}
+.btn-cancel{
+    background-color: #e9eaed;
+    color: #9fa0a2;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 550;
+    width: 48%;
+}
+.btn-update{
+    background-color: #2bd14e;
+    color: #fff;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 550;
+    width: 48%;
 }
 button {
     cursor: pointer;
@@ -209,24 +222,41 @@ form {
 form label {
     padding: 0.5em 0.5em 0.5em 0;
 }
-
 form input {
     background: #fff;
     border: 1px solid #9c9c9c;
 }
-#check {
-    z-index: 3;
-    display: none;
-}
-#check:checked ~ section {
-    background-color: rgba(115,115,115, 0.9);
-}
-#check:checked ~ .modal-container {
-    z-index: 2;
-    position: fixed;
+.modal-body form{
+    padding: 20px;
     display: flex;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    flex-direction: column;
+    gap: 0;
+}
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-bottom: 20px;
+}
+.form-group label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    display: flex;
+    width: 10vw;
+}
+.form-group .sub-label {
+    font-size: 14px;
+    color: #9fa0a2;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    display: flex;
+    width: 10vw;
+}
+.form-group input {
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    color: #9fa0a2;
+    width: 100%;
 }

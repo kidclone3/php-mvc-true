@@ -3,6 +3,7 @@
 
 use app\models\UserDetails;
 use thecodeholic\phpmvc\Application;
+use thecodeholic\phpmvc\form\Field;
 use thecodeholic\phpmvc\form\Form;
 
 $this->title = 'Profile';
@@ -88,10 +89,17 @@ $model = UserDetails::findOne(['username' => $user->username]);
     </div>
     <?php echo $form->field($model, 'jobTitle')?>
     <?php echo $form->field($model, 'profileImage')?>
-    <?php echo $form->field($model, 'dob')?>
+    <div class="form-group">
+        <div class="col">
+            <label for="profileImage">Profile Image</label>
+            <label class = "sub-label" for="profileImage">Profile Image</label>
+        </div>
+        <input type="file" name="profileImage" class ="form-control" accept="image/*">
+    </div>
+    <?php echo $form->field($model, 'dob', Field::TYPE_DATE)?>
     <?php echo $form->field($model, 'phoneNumber')?>
     <?php echo $form->field($model, 'address')?>
-    <div class="button">
+    <div class="btn-group">
         <button type="reset" name="cancel" class="btn-cancel">Cancel</button>
         <button type="submit" name="submit" class="btn-update">Update</button>
     </div>

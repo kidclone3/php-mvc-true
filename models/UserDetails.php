@@ -38,7 +38,7 @@ class UserDetails extends User {
             'jobTitle' => 'Job title',
             'profileImage' => 'Profile image',
             'dob' => 'Date of birth',
-            'phone' => 'Your phone number',
+            'phoneNumber' => 'Your phone number',
             'address' => 'Current address',
         ];
     }
@@ -51,7 +51,7 @@ class UserDetails extends User {
             'jobTitle' => 'Job title',
             'profileImage' => 'Profile image',
             'dob' => 'Date of birth',
-            'phone' => 'Your phone number',
+            'phoneNumber' => 'Your phone number',
             'address' => 'Current address',
         ];
     }
@@ -64,7 +64,7 @@ class UserDetails extends User {
             'jobTitle' => 'Job title',
             'profileImage' => 'Profile image',
             'dob' => 'Date of birth',
-            'phone' => 'Your phone number',
+            'phoneNumber' => 'Your phone number',
             'address' => 'Current address',
         ];
     }
