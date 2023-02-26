@@ -77,7 +77,7 @@
 }
 #auth .box-wrap h1 {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     padding: 15px -15px 8px 0;
 }
@@ -87,6 +87,8 @@
     position: absolute;
     width: inherit;
     top: 0;
+    overflow: auto;
+    padding-bottom: 50px;
 }
 #auth .box button {
     background: #2bd14e;
