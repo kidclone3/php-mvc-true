@@ -47,6 +47,15 @@ header .nav-group {
     position: relative;
     line-height: 3px;
 }
+.container {
+    width: 70vw;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    /*transform: translate(-50%, -50%);*/
+
+}
+
 button#btn-open {
     display: flex;
     background-color: #2bd14e;
@@ -69,7 +78,8 @@ button#btn-open .fa-arrow-up {
     padding: 20px;
     display: flex;
     z-index: 3;
-    justify-content: center;
+    justify-content: space-between;
+    width: 50vw;
 }
 .box .avatar {
     flex-direction: column;
@@ -95,8 +105,24 @@ button#btn-open .fa-arrow-up {
     color: #4b494a;
 }
 .contact {
-    position: relative;
     z-index: 3;
+    margin-top: 10vh;
+    padding: 20px;
+    display: grid;
+}
+.contact div {
+    border-bottom: 0.1em ridge #e9eaed;
+    margin: 20px 0 0 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+}
+.contact div h2 {
+    color: #9fa0a2;
+}
+.contact div a{
+    justify-self: flex-start;
 }
 img {
     position: relative;
@@ -138,14 +164,14 @@ p {
     min-height: 100vh;
     border-radius: 12px;
     background-color: rgba(0,0,0,0.5);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: inherit;
     opacity: 0;
     pointer-events: none;
     transition: all 0.25s ease-in-out;
-    overflow-y:scroll;
+    overflow:auto;
     padding-bottom: 40px;
 }
 #modal-container.show{
@@ -190,7 +216,7 @@ button#btn-close {
     align-items: center;
     margin: 20px 0;
 }
-.btn-cancel{
+#btn-cancel{
     background-color: #e9eaed;
     color: #9fa0a2;
     border: 0;
@@ -200,7 +226,7 @@ button#btn-close {
     font-weight: 550;
     width: 48%;
 }
-.btn-update{
+#btn-update{
     background-color: #2bd14e;
     color: #fff;
     border: 0;
@@ -222,9 +248,16 @@ form {
 form label {
     padding: 0.5em 0.5em 0.5em 0;
 }
+
 form input {
     background: #fff;
     border: 1px solid #9c9c9c;
+}
+form input:read-only{
+    background: #eee;
+}
+form input[type="image"] {
+    color: transparent;
 }
 .modal-body form{
     padding: 20px;
@@ -238,14 +271,14 @@ form input {
     margin-bottom: 20px;
 }
 .form-group label {
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 10px;
     justify-content: flex-start;
     display: flex;
-    width: 10vw;
+    min-width: 10vw;
 }
 .form-group .sub-label {
-    font-size: 14px;
+    font-size: 12px;
     color: #9fa0a2;
     margin-bottom: 10px;
     justify-content: flex-start;
@@ -259,4 +292,10 @@ form input {
     font-size: 16px;
     color: #9fa0a2;
     width: 100%;
+}
+.form-group input[name="address"] {
+    height: 6vh;
+}
+.form-group input[name="address"]::placeholder {
+    text-align: left;
 }

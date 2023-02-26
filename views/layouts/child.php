@@ -8,7 +8,6 @@
     <title><?php use thecodeholic\phpmvc\Application;
 
         echo $this->title ?></title>
-    <link rel="stylesheet" href="/css/child.css">
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

@@ -12,45 +12,50 @@ $model = UserDetails::findOne(['username' => $user->username]);
 ?>
 <header>
     <div class="group-left">
-        <i class="fa-solid fa-arrow-left"></i>
+        <a href="/">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
         <div class="nav-group">
             <h2> <a class = "account">Account</a></h2>
-            <h1> <?php echo $user->getDisplayName()."-".$user->getRole();?></h1>
+            <h1> <?php echo $model->getDisplayName()." - ".$model->getRole();?></h1>
         </div>
     </div>
     <button id="btn-open"> <i class="fa-solid fa-arrow-up"></i>Edit my account</button>
 </header>
-
-<div class="box">
-    <div class="avatar">
-        <img src="https://via.placeholder.com/150" alt="Profile Picture">
-
-    </div>
-    <div class="info">
-        <h1><?php echo $user->getDisplayName()?></h1>
-        <h3>Owner</h3>
-        <div class="info-box">
-            <div class="left">
-                <h4 class="column">Email address</h4>
-                <h4 class="column">Phone number</h4>
-                <h4 class="column">Direct managers</h4>
-            </div>
-            <div class="right">
-                <a class="column"><?php echo $user->getEmail()?></a>
-                <a class="column"><?php echo $model->getPhoneNumber()?></a>
-                <a class="column"></a>
+<div class="container">
+    <div class="box">
+        <div class="avatar">
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo $model->getProfileImage()?>" alt="Profile Picture">
+        </div>
+        <div class="info">
+            <h1><?php echo $model->getDisplayName()?></h1>
+            <h3>Owner</h3>
+            <div class="info-box">
+                <div class="left">
+                    <h4 class="column">Email address</h4>
+                    <h4 class="column">Phone number</h4>
+                    <h4 class="column">Direct managers</h4>
+                </div>
+                <div class="right">
+                    <a class="column"><?php echo $user->getEmail()?></a>
+                    <a class="column"><?php echo $model->getPhoneNumber()?></a>
+                    <a class="column"></a>
+                </div>
             </div>
         </div>
+
+    <!--    <a>--><?php //var_dump($_SESSION);?><!-- </a>-->
     </div>
-
-<!--    <a>--><?php //var_dump($_SESSION);?><!-- </a>-->
+    <div class="contact">
+        <div>
+            <h2>Contact info</h2>
+        </div>
+        <div>
+            <h4>Address</h4>
+            <a><?php echo $model->getAddress()?></a>
+        </div>
+    </div>
 </div>
-<div class="contact">
-    <h2>Contact info</h2>
-    <div class="contact-info"></div>
-    <h4>Address</h4>
-</div>
-
 <div id="modal-container" class="">
     <div id="modal">
         <div class="modal-header">
@@ -58,7 +63,7 @@ $model = UserDetails::findOne(['username' => $user->username]);
             <button id="btn-close"><i class="fa-solid fa-xmark"></i></button>
         </div>
     <div class="modal-body">
-    <?php  $form = Form::begin('', 'post');?>
+    <?php  $form = Form::begin('', 'post', ["enctype"=>"multipart/form-data"]);?>
 <!--        <label for="firstname">First Name</label>-->
 <!--        <input type="text" name="firstname" id="firstname" class="form-control">-->
 <!---->
@@ -88,7 +93,7 @@ $model = UserDetails::findOne(['username' => $user->username]);
         <input type="text" name="username" value="<?php echo $user->getDisplayName()?>" class ="form-control" readonly>
     </div>
     <?php echo $form->field($model, 'jobTitle')?>
-    <?php echo $form->field($model, 'profileImage')?>
+<!--    --><?php //echo $form->field($model, 'profileImage')?>
     <div class="form-group">
         <div class="col">
             <label for="profileImage">Profile Image</label>
@@ -100,8 +105,8 @@ $model = UserDetails::findOne(['username' => $user->username]);
     <?php echo $form->field($model, 'phoneNumber')?>
     <?php echo $form->field($model, 'address')?>
     <div class="btn-group">
-        <button type="reset" name="cancel" class="btn-cancel">Cancel</button>
-        <button type="submit" name="submit" class="btn-update">Update</button>
+        <button type="reset" name="cancel" id="btn-cancel">Cancel</button>
+        <button type="submit" name="submit" id="btn-update">Update</button>
     </div>
     <?php Form::end() ?>
     </div>
@@ -110,6 +115,7 @@ $model = UserDetails::findOne(['username' => $user->username]);
 <script>
     const btnOpen = document.getElementById('btn-open');
     const btnClose = document.getElementById('btn-close');
+    const btnUpdate = document.getElementById('btn-update');
     const modalContainer = document.getElementById('modal-container');
     btnOpen.addEventListener('click', () => {
         modalContainer.classList.add('show');
@@ -117,4 +123,7 @@ $model = UserDetails::findOne(['username' => $user->username]);
     btnClose.addEventListener('click', () => {
         modalContainer.classList.remove('show');
     });
+    // btnClose.addEventListener('click', () => {
+    //     window.location.reload();
+    // });
 </script>

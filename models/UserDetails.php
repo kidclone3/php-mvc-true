@@ -83,6 +83,9 @@ class UserDetails extends User {
 
     public function update():bool
     {
+        if ($this->validateImage()==='error') {
+            return false;
+        }
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         unset($attributes[array_search('username', $attributes)]);
@@ -106,5 +109,34 @@ class UserDetails extends User {
     public function getPhoneNumber(): string
     {
         return $this->phoneNumber;
+    }
+
+    public function validateImage()
+    {
+        $status = 'empty';
+        if (!empty($_FILES['profileImage']['name'])) {
+            $fileName=basename($_FILES["profileImage"]["name"]);
+            $fileType=pathinfo($fileName,PATHINFO_EXTENSION);
+
+            $allowTypes = array('jpg','png','jpeg','gif');
+            if(in_array($fileType, $allowTypes)){
+                $image = $_FILES['profileImage']['tmp_name'];
+                $imgContent = addslashes(file_get_contents($image));
+                $this->profileImage = $imgContent;
+                $status = 'success';
+            } else {
+                $status = 'error';
+            }
+        }
+        return $status;
+    }
+    public function getProfileImage()
+    {
+        return base64_encode($this->profileImage);
+    }
+
+    public function getAddress()
+    {
+        return $this->address;
     }
 }
