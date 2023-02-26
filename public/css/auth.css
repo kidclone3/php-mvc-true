@@ -31,10 +31,12 @@
 .hidden {
     display: none;
 }
-.form-group {
-    line-height: 30px;
+#auth .box-wrap .box .form-group {
+    /*line-height: 30px;*/
+    display: flex;
+    flex-direction: column;
 }
-.form-group input {
+#auth .box-wrap .box .form-group input {
     border: 2px double #eee;
     border-radius: 4px;
     padding: 10px 15px;
@@ -43,7 +45,7 @@
     width: 100%;
     box-sizing: border-box;
 }
-.form-group label {
+#auth .box-wrap .box .form-group label {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 20px;
